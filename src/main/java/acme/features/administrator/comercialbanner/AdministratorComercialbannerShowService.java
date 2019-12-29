@@ -15,7 +15,7 @@ import acme.framework.services.AbstractShowService;
 public class AdministratorComercialbannerShowService implements AbstractShowService<Administrator, Comercialbanner> {
 
 	@Autowired
-	AdministratorComercialbannerRepository repository;
+	private AdministratorComercialbannerRepository repository;
 
 
 	@Override

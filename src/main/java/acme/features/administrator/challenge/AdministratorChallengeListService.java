@@ -20,7 +20,7 @@ public class AdministratorChallengeListService implements AbstractListService<Ad
 	//	 Internal  state	-----------------------------------------------------------------------------------------------------------------
 
 	@Autowired
-	AdministratorChallengeRepository repository;
+	private AdministratorChallengeRepository repository;
 
 
 	//	  AbstractListService<Authenticated, Challenge> Interface	-------------------------------------------------------------------------

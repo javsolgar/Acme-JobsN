@@ -16,7 +16,7 @@ public class AdministratorChallengeDeleteService implements AbstractDeleteServic
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	AdministratorChallengeRepository repository;
+	private AdministratorChallengeRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Challenge> Interface ---------------------------------------------------------------------------------------
@@ -24,8 +24,7 @@ public class AdministratorChallengeDeleteService implements AbstractDeleteServic
 	@Override
 	public boolean authorise(final Request<Challenge> request) {
 		assert request != null;
-		boolean b = request.getPrincipal().hasRole(Administrator.class);
-		return b;
+		return true;
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import acme.framework.services.AbstractCreateService;
 public class AdministratorNoncomercialbannerCreateService implements AbstractCreateService<Administrator, Noncomercialbanner> {
 
 	@Autowired
-	AdministratorNoncomercialbannerRepository repository;
+	private AdministratorNoncomercialbannerRepository repository;
 
 
 	@Override

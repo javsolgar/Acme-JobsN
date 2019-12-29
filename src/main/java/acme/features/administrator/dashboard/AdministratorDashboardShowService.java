@@ -28,13 +28,13 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	AdministratorDashboardRepository	repository;
+	private AdministratorDashboardRepository	repository;
 
 	@Autowired
-	AuthenticatedRequestRepository		reqRepository;
+	private AuthenticatedRequestRepository		reqRepository;
 
 	@Autowired
-	AuthenticatedOffersRepository		offerRepository;
+	private AuthenticatedOffersRepository		offerRepository;
 
 
 	// AbstractShowService<Administrator, Dashboard> interface --------------

@@ -15,14 +15,13 @@ import acme.framework.services.AbstractDeleteService;
 public class AdministratorInvestorsrecordsDeleteService implements AbstractDeleteService<Administrator, Investorsrecords> {
 
 	@Autowired
-	AdministratorInvestorsrecordsRepository repository;
+	private AdministratorInvestorsrecordsRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Investorsrecords> request) {
 		assert request != null;
-		boolean b = request.getPrincipal().hasRole(Administrator.class);
-		return b;
+		return true;
 	}
 
 	@Override

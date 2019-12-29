@@ -15,7 +15,7 @@ public class AdministratorChallengeShowService implements AbstractShowService<Ad
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	AdministratorChallengeRepository repository;
+	private AdministratorChallengeRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Challenge> Interface ---------------------------------------------------------------------------------------

@@ -19,7 +19,7 @@ public class AdministratorChallengeCreateService implements AbstractCreateServic
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	AdministratorChallengeRepository repository;
+	private AdministratorChallengeRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Challenge> Interface ---------------------------------------------------------------------------------------
