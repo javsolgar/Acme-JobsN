@@ -19,7 +19,7 @@ public class ProviderRequestListService implements AbstractListService<Provider,
 	//	 Internal  state	-------------------------------------------------------------------------
 
 	@Autowired
-	ProviderRequestRepository repository;
+	private ProviderRequestRepository repository;
 
 
 	//	AbstractListService<provider, Announcement> interface ----------------------------------
