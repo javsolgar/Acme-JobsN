@@ -18,10 +18,10 @@ import acme.framework.services.AbstractListService;
 public class WorkerDutyListService implements AbstractListService<Worker, Duty> {
 
 	@Autowired
-	WorkerDutyRepository		repository;
+	private WorkerDutyRepository		repository;
 
 	@Autowired
-	AuthenticatedJobRepository	repositoryJob;
+	private AuthenticatedJobRepository	repositoryJob;
 
 
 	@Override

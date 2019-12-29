@@ -46,7 +46,7 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		id = request.getModel().getInteger("idDescriptor");
 		descriptor = this.repository.findOneById(id);
 
-		res = idPrincipal == descriptor.getJob().getEmployer().getUserAccount().getId();
+		res = idPrincipal == descriptor.getJob().getEmployer().getUserAccount().getId() && !descriptor.getJob().isFinalMode();
 
 		return res;
 	}
@@ -103,60 +103,60 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 
 		// Title validation -------------------------------------------------------------------------------
 
-		if(!errors.hasErrors("title")) {
-		hasTitle = entity.getTitle() != null;
-		errors.state(request, hasTitle, "title", "employer.duty.error.must-have-title");
+		if (!errors.hasErrors("title")) {
+			hasTitle = entity.getTitle() != null;
+			errors.state(request, hasTitle, "title", "employer.duty.error.must-have-title");
 
-		if (hasTitle) {
-			hasSpamTitle = Spamfilter.spamThreshold(entity.getTitle(), spamWords, spamThreshold);
-			errors.state(request, !hasSpamTitle, "title", "employer.duty.error.must-not-have-title-spam");
-		}
+			if (hasTitle) {
+				hasSpamTitle = Spamfilter.spamThreshold(entity.getTitle(), spamWords, spamThreshold);
+				errors.state(request, !hasSpamTitle, "title", "employer.duty.error.must-not-have-title-spam");
+			}
 		}
 
 		// Description validation ------------------------------------------------------------------------
 
-		if(!errors.hasErrors("description")) {
-		hasDescription = entity.getDescription() != null;
-		errors.state(request, hasDescription, "description", "employer.duty.error.must-have-description");
+		if (!errors.hasErrors("description")) {
+			hasDescription = entity.getDescription() != null;
+			errors.state(request, hasDescription, "description", "employer.duty.error.must-have-description");
 
-		if (hasDescription) {
-			hasSpamDescription = Spamfilter.spamThreshold(entity.getDescription(), spamWords, spamThreshold);
-			errors.state(request, !hasSpamDescription, "description", "employer.duty.error.must-not-be-spam");
-		}
+			if (hasDescription) {
+				hasSpamDescription = Spamfilter.spamThreshold(entity.getDescription(), spamWords, spamThreshold);
+				errors.state(request, !hasSpamDescription, "description", "employer.duty.error.must-not-be-spam");
+			}
 		}
 
 		// Percentage validation -------------------------------------------------------------------------
 
-		if(!errors.hasErrors("percentage")) {
-		hasPercentage = entity.getPercentage() != null;
-		errors.state(request, hasPercentage, "percentage", "employer.duty.error.must-not-have-percentage");
-		if (hasPercentage) {
-			isPercentage = entity.getPercentage() >= 0 && entity.getPercentage() <= 100;
-			errors.state(request, isPercentage, "percentage", "employer.duty.error.must-be-a-percentage");
+		if (!errors.hasErrors("percentage")) {
+			hasPercentage = entity.getPercentage() != null;
+			errors.state(request, hasPercentage, "percentage", "employer.duty.error.must-not-have-percentage");
+			if (hasPercentage) {
+				isPercentage = entity.getPercentage() >= 0 && entity.getPercentage() <= 100;
+				errors.state(request, isPercentage, "percentage", "employer.duty.error.must-be-a-percentage");
 
-			if (isPercentage) {
-				percentageSumLess100 = true;
-				Collection<Duty> allDutys;
-				int descriptorId;
-				Double sum = 0.;
+				if (isPercentage) {
+					percentageSumLess100 = true;
+					Collection<Duty> allDutys;
+					int descriptorId;
+					Double sum = 0.;
 
-				descriptorId = entity.getDescriptor().getId();
+					descriptorId = entity.getDescriptor().getId();
 
-				allDutys = this.repository.findManyByDescriptorId(descriptorId);
+					allDutys = this.repository.findManyByDescriptorId(descriptorId);
 
-				for (Duty d : allDutys) {
-					sum += d.getPercentage();
+					for (Duty d : allDutys) {
+						sum += d.getPercentage();
+					}
+					sum += entity.getPercentage();
+
+					if (sum > 100) {
+						percentageSumLess100 = false;
+					}
+
+					errors.state(request, percentageSumLess100, "percentage", "employer.duty.error.must-be-less-or-equal-than-101");
+
 				}
-				sum += entity.getPercentage();
-
-				if (sum > 100) {
-					percentageSumLess100 = false;
-				}
-
-				errors.state(request, percentageSumLess100, "percentage", "employer.duty.error.must-be-less-or-equal-than-101");
-
 			}
-		}
 		}
 	}
 

@@ -15,7 +15,7 @@ import acme.framework.services.AbstractDeleteService;
 public class AdministratorComercialbannerDeleteService implements AbstractDeleteService<Administrator, Comercialbanner> {
 
 	@Autowired
-	AdministratorComercialbannerRepository repository;
+	private AdministratorComercialbannerRepository repository;
 
 
 	@Override

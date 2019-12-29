@@ -29,4 +29,3 @@ public interface AuthenticatedMessageRepository extends AbstractRepository {
 	@Query("select authenticated from Participates p where p.messagethread.id=?1")
 	Collection<Authenticated> findUsersFromMTId(int id);
 }
-//select ua, mt from UserAccount ua join ua.messagethread mt group by mt;

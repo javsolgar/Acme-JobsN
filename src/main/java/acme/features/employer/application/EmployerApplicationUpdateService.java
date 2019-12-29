@@ -16,7 +16,7 @@ import acme.framework.services.AbstractUpdateService;
 public class EmployerApplicationUpdateService implements AbstractUpdateService<Employer, Application> {
 
 	@Autowired
-	EmployerApplicationRepository repository;
+	private EmployerApplicationRepository repository;
 
 
 	@Override

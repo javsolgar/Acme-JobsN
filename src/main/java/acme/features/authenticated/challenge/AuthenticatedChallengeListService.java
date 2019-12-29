@@ -20,7 +20,7 @@ public class AuthenticatedChallengeListService implements AbstractListService<Au
 	//	 Internal  state	-----------------------------------------------------------------------------------------------------------------
 
 	@Autowired
-	AuthenticatedChallengeRepository repository;
+	private AuthenticatedChallengeRepository repository;
 
 
 	//	  AbstractListService<Authenticated, Challenge> Interface	-------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 
 package acme.features.authenticated.auditrecord;
 
+import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import acme.framework.services.AbstractListService;
 public class AuthenticatedAuditrecordListMineService implements AbstractListService<Authenticated, Auditrecord> {
 
 	@Autowired
-	AuthenticatedAuditrecordRepository repository;
+	private AuthenticatedAuditrecordRepository repository;
 
 
 	@Override
@@ -27,11 +28,12 @@ public class AuthenticatedAuditrecordListMineService implements AbstractListServ
 		boolean res;
 		Integer id;
 		Job result;
+		Calendar calendar = Calendar.getInstance();
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneJobById(id);
 
-		res = result.isFinalMode();
+		res = result.isFinalMode() && result.getDeadline().after(calendar.getTime());
 		return res;
 	}
 

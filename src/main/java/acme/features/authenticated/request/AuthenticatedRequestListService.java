@@ -19,7 +19,7 @@ public class AuthenticatedRequestListService implements AbstractListService<Auth
 	//	 Internal  state	-------------------------------------------------------------------------
 
 	@Autowired
-	AuthenticatedRequestRepository repository;
+	private AuthenticatedRequestRepository repository;
 
 
 	//	AbstractListService<Authenticated, Announcement> interface ----------------------------------

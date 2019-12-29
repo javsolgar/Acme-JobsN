@@ -18,7 +18,7 @@ import acme.framework.services.AbstractListService;
 public class AnonymousAnnouncementListService implements AbstractListService<Anonymous, Announcement> {
 
 	@Autowired
-	AnonymousAnnouncementRepository repository;
+	private AnonymousAnnouncementRepository repository;
 
 
 	@Override

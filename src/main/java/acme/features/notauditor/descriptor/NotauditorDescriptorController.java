@@ -17,7 +17,7 @@ import acme.framework.controllers.AbstractController;
 public class NotauditorDescriptorController extends AbstractController<Auditor, Descriptor> {
 
 	@Autowired
-	NotauditorDescriptorShowService showService;
+	private NotauditorDescriptorShowService showService;
 
 
 	@PostConstruct

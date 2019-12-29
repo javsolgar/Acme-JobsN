@@ -19,7 +19,7 @@ public class ConsumerOffersCreateService implements AbstractCreateService<Consum
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	ConsumerOffersRepository repository;
+	private ConsumerOffersRepository repository;
 
 
 	// Abstract<Provider, Request> -------------------------------------------------------------------------------------------------------

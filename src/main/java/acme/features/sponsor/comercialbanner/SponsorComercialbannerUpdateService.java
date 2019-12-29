@@ -26,7 +26,7 @@ public class SponsorComercialbannerUpdateService implements AbstractUpdateServic
 	private SponsorComercialbannerRepository	repository;
 
 	@Autowired
-	ConfigurationRepository						ConfigurationRepository;
+	private ConfigurationRepository				ConfigurationRepository;
 
 
 	@Override

@@ -45,7 +45,7 @@ public class EmployerDutyUpdateService implements AbstractUpdateService<Employer
 		id = request.getModel().getInteger("id");
 		Duty = this.repository.findDutyById(id);
 
-		res = idPrincipal == Duty.getDescriptor().getJob().getEmployer().getUserAccount().getId();
+		res = idPrincipal == Duty.getDescriptor().getJob().getEmployer().getUserAccount().getId() && !Duty.getFinalMode();
 
 		return res;
 	}

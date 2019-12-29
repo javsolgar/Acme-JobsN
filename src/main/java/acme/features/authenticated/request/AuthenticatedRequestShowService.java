@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.request;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class AuthenticatedRequestShowService implements AbstractShowService<Auth
 
 	//	 Internal  state	-------------------------------------------------------------------------
 	@Autowired
-	AuthenticatedRequestRepository repository;
+	private AuthenticatedRequestRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Request> Interface --------------------------------------
@@ -22,7 +24,18 @@ public class AuthenticatedRequestShowService implements AbstractShowService<Auth
 	@Override
 	public boolean authorise(final acme.framework.components.Request<Request> request) {
 		assert request != null;
-		return true;
+
+		Request result;
+		boolean res;
+		Calendar calendar;
+		int id;
+
+		calendar = Calendar.getInstance();
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneById(id);
+		res = result.getDeadLine().after(calendar.getTime());
+
+		return res;
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import acme.framework.services.AbstractShowService;
 public class EmployerDutyShowService implements AbstractShowService<Employer, Duty> {
 
 	@Autowired
-	EmployerDutyRepository repository;
+	private EmployerDutyRepository repository;
 
 
 	@Override
@@ -43,7 +43,7 @@ public class EmployerDutyShowService implements AbstractShowService<Employer, Du
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "description", "percentage", "jobTitle", "jobId");
+		request.unbind(entity, model, "title", "description", "percentage", "jobTitle", "jobId", "finalMode");
 
 	}
 

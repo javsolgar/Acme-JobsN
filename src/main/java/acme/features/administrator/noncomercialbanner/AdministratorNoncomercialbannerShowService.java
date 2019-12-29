@@ -14,7 +14,7 @@ import acme.framework.services.AbstractShowService;
 public class AdministratorNoncomercialbannerShowService implements AbstractShowService<Administrator, Noncomercialbanner> {
 
 	@Autowired
-	AdministratorNoncomercialbannerRepository repository;
+	private AdministratorNoncomercialbannerRepository repository;
 
 
 	@Override

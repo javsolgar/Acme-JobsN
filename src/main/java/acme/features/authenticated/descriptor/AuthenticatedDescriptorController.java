@@ -17,7 +17,7 @@ import acme.framework.entities.Authenticated;
 public class AuthenticatedDescriptorController extends AbstractController<Authenticated, Descriptor> {
 
 	@Autowired
-	AuthenticatedDescriptorShowService showService;
+	private AuthenticatedDescriptorShowService showService;
 
 
 	@PostConstruct

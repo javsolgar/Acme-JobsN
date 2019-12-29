@@ -16,7 +16,7 @@ import acme.framework.services.AbstractListService;
 public class AdministratorCompanyRecordsListService implements AbstractListService<Administrator, Companyrecord> {
 
 	@Autowired
-	AdministratorCompanyRecordsRepository repository;
+	private AdministratorCompanyRecordsRepository repository;
 
 
 	@Override

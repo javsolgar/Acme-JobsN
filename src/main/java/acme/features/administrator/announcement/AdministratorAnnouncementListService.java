@@ -16,7 +16,7 @@ import acme.framework.services.AbstractListService;
 public class AdministratorAnnouncementListService implements AbstractListService<Administrator, Announcement> {
 
 	@Autowired
-	AdministratorAnnouncementRepository repository;
+	private AdministratorAnnouncementRepository repository;
 
 
 	@Override

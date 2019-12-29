@@ -16,7 +16,7 @@ import acme.framework.services.AbstractListService;
 public class AdministratorNoncomercialbannerListService implements AbstractListService<Administrator, Noncomercialbanner> {
 
 	@Autowired
-	AdministratorNoncomercialbannerRepository repository;
+	private AdministratorNoncomercialbannerRepository repository;
 
 
 	@Override

@@ -16,7 +16,7 @@ import acme.framework.services.AbstractShowService;
 public class AuthenticatedMessagethreadShowService implements AbstractShowService<Authenticated, Messagethread> {
 
 	@Autowired
-	AuthenticatedMessagethreadRepository repository;
+	private AuthenticatedMessagethreadRepository repository;
 
 
 	@Override

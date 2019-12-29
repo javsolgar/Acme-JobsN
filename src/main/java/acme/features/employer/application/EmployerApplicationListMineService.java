@@ -19,7 +19,7 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 	//	 Internal  state	-------------------------------------------------------------------------
 
 	@Autowired
-	EmployerApplicationRepository repository;
+	private EmployerApplicationRepository repository;
 
 
 	//	AbstractListService<Worker, Application> interface ------------------------------------------
