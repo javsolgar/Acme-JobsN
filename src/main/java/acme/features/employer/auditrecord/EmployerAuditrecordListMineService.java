@@ -11,13 +11,14 @@ import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
 public class EmployerAuditrecordListMineService implements AbstractListService<Employer, Auditrecord> {
 
 	@Autowired
-	EmployerAuditrecordRepository repository;
+	private EmployerAuditrecordRepository repository;
 
 
 	@Override
@@ -27,11 +28,16 @@ public class EmployerAuditrecordListMineService implements AbstractListService<E
 		boolean res;
 		Integer id;
 		Job result;
+		Principal principal;
+		int principalId;
+
+		principal = request.getPrincipal();
+		principalId = principal.getActiveRoleId();
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneJobById(id);
 
-		res = result.isFinalMode();
+		res = result.isFinalMode() && result.getEmployer().getId() == principalId;
 
 		return res;
 	}

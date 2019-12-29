@@ -16,7 +16,7 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 
 	//	Internal State ---------------------------------------------------------------------------------------------------
 	@Autowired
-	AdministratorConfigurationRepository repository;
+	private AdministratorConfigurationRepository repository;
 
 
 	// AbstractUpdateService<Administrator, Configuration> ---------------------------------------------------------------
@@ -24,8 +24,7 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 	@Override
 	public boolean authorise(final Request<Configuration> request) {
 		assert request != null;
-		boolean b = request.getPrincipal().hasRole(Administrator.class);
-		return b;
+		return true;
 	}
 
 	@Override

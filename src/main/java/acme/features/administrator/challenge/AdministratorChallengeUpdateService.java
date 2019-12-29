@@ -19,7 +19,7 @@ public class AdministratorChallengeUpdateService implements AbstractUpdateServic
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	AdministratorChallengeRepository repository;
+	private AdministratorChallengeRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Challenge> Interface ---------------------------------------------------------------------------------------

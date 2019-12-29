@@ -15,7 +15,7 @@ import acme.framework.services.AbstractShowService;
 public class SponsorNoncomercialbannerShowService implements AbstractShowService<Sponsor, Noncomercialbanner> {
 
 	@Autowired
-	SponsorNoncomercialbannerRepository repository;
+	private SponsorNoncomercialbannerRepository repository;
 
 
 	@Override

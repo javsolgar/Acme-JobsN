@@ -16,7 +16,7 @@ import acme.framework.services.AbstractListService;
 public class AuthenticatedCompanyrecordListService implements AbstractListService<Authenticated, Companyrecord> {
 
 	@Autowired
-	AuthenticatedCompanyrecordRepository repository;
+	private AuthenticatedCompanyrecordRepository repository;
 
 
 	@Override

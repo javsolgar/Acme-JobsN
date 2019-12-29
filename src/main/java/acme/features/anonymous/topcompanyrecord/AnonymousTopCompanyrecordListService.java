@@ -16,7 +16,7 @@ import acme.framework.services.AbstractListService;
 public class AnonymousTopCompanyrecordListService implements AbstractListService<Anonymous, Companyrecord> {
 
 	@Autowired
-	AnonymousTopCompanyrecordRepository repository;
+	private AnonymousTopCompanyrecordRepository repository;
 
 
 	@Override

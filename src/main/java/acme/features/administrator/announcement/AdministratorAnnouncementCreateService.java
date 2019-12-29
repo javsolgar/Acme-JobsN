@@ -19,7 +19,7 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 	//Internal state --------------------------------------------------------------------------------------------------
 
 	@Autowired
-	AdministratorAnnouncementRepository repository;
+	private AdministratorAnnouncementRepository repository;
 
 
 	// AbstractCreateService<Administrator, Announcement> -------------------------------------------------------------

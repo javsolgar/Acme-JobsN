@@ -14,7 +14,7 @@ public class ProviderRequestShowService implements AbstractShowService<Provider,
 
 	//	 Internal  state	-------------------------------------------------------------------------
 	@Autowired
-	ProviderRequestRepository repository;
+	private ProviderRequestRepository repository;
 
 
 	//	AbstractShowService<provider, Request> Interface --------------------------------------

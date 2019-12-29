@@ -1,6 +1,7 @@
 
 package acme.features.authenticated.duty;
 
+import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.descriptor.Descriptor;
 import acme.entities.duties.Duty;
-import acme.features.authenticated.job.AuthenticatedJobRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -18,10 +18,7 @@ import acme.framework.services.AbstractListService;
 public class AuthenticatedDutyListService implements AbstractListService<Authenticated, Duty> {
 
 	@Autowired
-	AuthenticatedDutyRepository	repository;
-
-	@Autowired
-	AuthenticatedJobRepository	repositoryJob;
+	private AuthenticatedDutyRepository repository;
 
 
 	@Override
@@ -30,8 +27,9 @@ public class AuthenticatedDutyListService implements AbstractListService<Authent
 		boolean res;
 		Integer id = request.getModel().getInteger("id");
 		Descriptor descriptor = this.repository.findOneByDescriptorId(id);
+		Calendar calendar = Calendar.getInstance();
 
-		res = descriptor.getJob().isFinalMode();
+		res = descriptor.getJob().isFinalMode() && descriptor.getJob().getDeadline().after(calendar.getTime());
 
 		return res;
 	}

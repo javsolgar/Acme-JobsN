@@ -23,4 +23,5 @@
 </acme:list>
 <jstl:set var="paramIdDescriptor" value="${param.idDescriptor}"/>
 
+
 <h4><acme:menu-suboption code="employer.duty.list.button.addDuty" action="/employer/duty/create?idDescriptor=${paramIdDescriptor}"/></h4>

@@ -17,7 +17,7 @@ import acme.framework.controllers.AbstractController;
 public class WorkerDescriptorController extends AbstractController<Worker, Descriptor> {
 
 	@Autowired
-	WorkerDescriptorShowService showService;
+	private WorkerDescriptorShowService showService;
 
 
 	@PostConstruct

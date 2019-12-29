@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.descriptor;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ import acme.framework.services.AbstractShowService;
 public class AuthenticatedDescriptorShowService implements AbstractShowService<Authenticated, Descriptor> {
 
 	@Autowired
-	AuthenticatedDescriptorRepository repository;
+	private AuthenticatedDescriptorRepository repository;
 
 
 	@Override
@@ -23,8 +25,9 @@ public class AuthenticatedDescriptorShowService implements AbstractShowService<A
 		boolean res;
 		Integer id = request.getModel().getInteger("jobId");
 		Descriptor result = this.repository.findOneByDescriptorId(id);
+		Calendar calendar = Calendar.getInstance();
 
-		res = result.getJob().isFinalMode();
+		res = result.getJob().isFinalMode() && result.getJob().getDeadline().after(calendar.getTime());
 
 		return res;
 	}

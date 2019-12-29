@@ -15,14 +15,13 @@ import acme.framework.services.AbstractUpdateService;
 public class AdministratorCompanyRecordsUpdateService implements AbstractUpdateService<Administrator, Companyrecord> {
 
 	@Autowired
-	AdministratorCompanyRecordsRepository repository;
+	private AdministratorCompanyRecordsRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Companyrecord> request) {
 		assert request != null;
-		boolean b = request.getPrincipal().hasRole(Administrator.class);
-		return b;
+		return true;
 	}
 
 	@Override

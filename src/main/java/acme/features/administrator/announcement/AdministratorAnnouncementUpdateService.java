@@ -19,7 +19,7 @@ public class AdministratorAnnouncementUpdateService implements AbstractUpdateSer
 	//Internal state --------------------------------------------------------------------------------------------------
 
 	@Autowired
-	AdministratorAnnouncementRepository repository;
+	private AdministratorAnnouncementRepository repository;
 
 
 	// AbstractUpdateService<Administrator, Announcement> -------------------------------------------------------------
@@ -27,8 +27,7 @@ public class AdministratorAnnouncementUpdateService implements AbstractUpdateSer
 	@Override
 	public boolean authorise(final Request<Announcement> request) {
 		assert request != null;
-		boolean b = request.getPrincipal().hasRole(Administrator.class);
-		return b;
+		return true;
 	}
 
 	@Override

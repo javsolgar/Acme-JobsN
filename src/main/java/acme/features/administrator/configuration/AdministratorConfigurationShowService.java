@@ -16,7 +16,7 @@ public class AdministratorConfigurationShowService implements AbstractShowServic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	AdministratorConfigurationRepository repository;
+	private AdministratorConfigurationRepository repository;
 
 	// AbstractShowService<Administrator, Configuration> interface --------------
 

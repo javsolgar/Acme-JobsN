@@ -17,7 +17,7 @@ import acme.framework.services.AbstractListService;
 public class AuditorAuditrecordListMineService implements AbstractListService<Auditor, Auditrecord> {
 
 	@Autowired
-	AuditorAuditrecordRepository repository;
+	private AuditorAuditrecordRepository repository;
 
 
 	@Override

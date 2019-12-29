@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.job;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +23,11 @@ public class AuthenticatedJobShowService implements AbstractShowService<Authenti
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
 		boolean res;
+		Calendar calendar = Calendar.getInstance();
 		Integer id = request.getModel().getInteger("id");
 		Job result = this.repository.findOneJobById(id);
 
-		res = result.isFinalMode();
+		res = result.isFinalMode() && result.getDeadline().after(calendar.getTime());
 
 		return res;
 	}

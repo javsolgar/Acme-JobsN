@@ -41,6 +41,11 @@ public class Duty extends DomainEntity {
 		return this.descriptor.getJob().getId();
 	}
 
+	@Transient
+	public boolean getFinalMode() {
+		return this.descriptor.getJob().isFinalMode();
+	}
+
 
 	//relationships
 

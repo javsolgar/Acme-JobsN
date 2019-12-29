@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.auditrecord;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,11 +26,12 @@ public class AuthenticatedAuditrecordShowService implements AbstractShowService<
 		boolean res;
 		Integer id;
 		Auditrecord result;
+		Calendar calendar = Calendar.getInstance();
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneAuditrecordById(id);
 
-		res = result.getIsFinalMode();
+		res = result.getIsFinalMode() && result.getJob().getDeadline().after(calendar.getTime());
 		return res;
 	}
 

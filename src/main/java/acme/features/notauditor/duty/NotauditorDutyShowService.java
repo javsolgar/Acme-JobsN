@@ -14,7 +14,7 @@ import acme.framework.services.AbstractShowService;
 public class NotauditorDutyShowService implements AbstractShowService<Auditor, Duty> {
 
 	@Autowired
-	NotauditorDutyRepository repository;
+	private NotauditorDutyRepository repository;
 
 
 	@Override
