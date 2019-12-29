@@ -20,7 +20,7 @@ public class ConsumerOffersListService implements AbstractListService<Consumer, 
 	//	 Internal  state	-------------------------------------------------------------------------
 
 	@Autowired
-	ConsumerOffersRepository repository;
+	private ConsumerOffersRepository repository;
 
 
 	//	AbstractListService<Authenticated, Offers> interface ----------------------------------
