@@ -403,11 +403,6 @@
 				<ref bean="employer2Authenticated"/>
 			</list>
 		</property>
-		<property name="messagethread">
-			<list>
-				<ref bean="messagethread1"/>
-			</list>
-		</property>
 	</bean>
 	
 	<bean name="employer2Employer" class="acme.entities.roles.Employer">
@@ -438,11 +433,6 @@
 			<list>
 				<ref bean="worker1Worker"/>
 				<ref bean="worker1Authenticated"/>
-			</list>
-		</property>
-		<property name="messagethread">
-			<list>
-				<ref bean="messagethread1"/>
 			</list>
 		</property>
 	</bean>
@@ -803,7 +793,7 @@
 	<bean id="messagethread1" class="acme.entities.messagethreads.Messagethread">
 		<property name="title" value="Hilo de mensajes 1"/>
 		<property name="moment" value="2019/11/25 12:00"/>
-		<property name="usernames" value=""/>
+		<property name="usernames" value="employer1,employer2"/>
 		<property name="creator" ref="employer1Authenticated"/>
 	</bean>
 	
@@ -833,7 +823,7 @@
 		<property name="respStatement" value="Boss"/>
 		<property name="description" value="I want to become auditor"/>
 		<property name="status" value="pending"/>
-		<property name="user" ref="worker1UserAccount"/>
+		<property name="user" ref="worker1Authenticated"/>
 		<property name="moment" value="2019/12/12 12:12"/>
 	</bean>
 	
@@ -842,7 +832,7 @@
 		<property name="respStatement" value="Boss"/>
 		<property name="description" value="I want to become auditor"/>
 		<property name="status" value="rejected"/>
-		<property name="user" ref="worker2UserAccount"/>
+		<property name="user" ref="worker2Authenticated"/>
 		<property name="moment" value="2019/12/11 12:12"/>
 	</bean>
 	

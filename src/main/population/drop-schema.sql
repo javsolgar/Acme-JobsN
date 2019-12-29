@@ -21,7 +21,7 @@
 
     alter table `auditorrequest` 
        drop 
-       foreign key `FK2nu5ndvri71kk1avp7v79loqo`;
+       foreign key `FK48mm6hlb69dlcjnf43eiov74s`;
 
     alter table `auditrecord` 
        drop 
@@ -99,14 +99,6 @@
        drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
 
-    alter table `user_account_messagethread` 
-       drop 
-       foreign key `FK6yqqctsrjddklo56unt0r4tgh`;
-
-    alter table `user_account_messagethread` 
-       drop 
-       foreign key `FK5590jid94qdluwlnsbr2w4tbx`;
-
     alter table `worker` 
        drop 
        foreign key FK_l5q1f33vs2drypmbdhpdgwfv3;
@@ -166,8 +158,6 @@
     drop table if exists `sponsor`;
 
     drop table if exists `user_account`;
-
-    drop table if exists `user_account_messagethread`;
 
     drop table if exists `worker`;
 

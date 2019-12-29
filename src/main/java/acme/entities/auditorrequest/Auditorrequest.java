@@ -14,8 +14,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import acme.framework.entities.Authenticated;
 import acme.framework.entities.DomainEntity;
-import acme.framework.entities.UserAccount;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,13 +50,13 @@ public class Auditorrequest extends DomainEntity {
 
 	@Valid
 	@ManyToOne
-	private UserAccount			user;
+	private Authenticated		user;
 
 
 	// Derivated properties
 
 	@Transient
 	public String getUsername() {
-		return this.user.getUsername();
+		return this.user.getUserAccount().getUsername();
 	}
 }
