@@ -20,7 +20,7 @@ public class AuthenticatedOffersListService implements AbstractListService<Authe
 	//	 Internal  state	-------------------------------------------------------------------------
 
 	@Autowired
-	AuthenticatedOffersRepository repository;
+	private AuthenticatedOffersRepository repository;
 
 
 	//	AbstractListService<Authenticated, Offers> interface ----------------------------------

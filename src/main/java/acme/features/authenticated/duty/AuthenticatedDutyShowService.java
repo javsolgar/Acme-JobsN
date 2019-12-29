@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.duty;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +25,9 @@ public class AuthenticatedDutyShowService implements AbstractShowService<Authent
 		boolean res;
 		Integer id = request.getModel().getInteger("id");
 		Duty result = this.repository.findDutyById(id);
+		Calendar calendar = Calendar.getInstance();
 
-		res = result.getDescriptor().getJob().isFinalMode();
+		res = result.getDescriptor().getJob().isFinalMode() && result.getDescriptor().getJob().getDeadline().after(calendar.getTime());
 
 		return res;
 	}

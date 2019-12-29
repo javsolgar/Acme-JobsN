@@ -15,7 +15,7 @@ public class AuthenticatedChallengeShowService implements AbstractShowService<Au
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	AuthenticatedChallengeRepository repository;
+	private AuthenticatedChallengeRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Challenge> Interface ---------------------------------------------------------------------------------------

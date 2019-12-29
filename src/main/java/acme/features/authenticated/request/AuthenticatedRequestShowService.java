@@ -14,7 +14,7 @@ public class AuthenticatedRequestShowService implements AbstractShowService<Auth
 
 	//	 Internal  state	-------------------------------------------------------------------------
 	@Autowired
-	AuthenticatedRequestRepository repository;
+	private AuthenticatedRequestRepository repository;
 
 
 	//	AbstractShowService<Authenticated, Request> Interface --------------------------------------

@@ -653,7 +653,7 @@
 		<bean id="duty1" class="acme.entities.duties.Duty">
 			<property name="title" value="Duty 1"/>
 			<property name="description" value="Duty description"/>
-			<property name="percentage" value="15.0"/>
+			<property name="percentage" value="100.0"/>
 			<property name="descriptor" ref="descriptor1"/>
 			
 		</bean>
@@ -661,7 +661,7 @@
 		<bean id="duty2" class="acme.entities.duties.Duty">
 			<property name="title" value="Duty 2"/>
 			<property name="description" value="Duty description"/>
-			<property name="percentage" value="15.0"/>
+			<property name="percentage" value="100.0"/>
 			<property name="descriptor" ref="descriptor2"/>
 			
 		</bean>
@@ -677,7 +677,7 @@
 		<bean id="duty4" class="acme.entities.duties.Duty">
 			<property name="title" value="Duty 4"/>
 			<property name="description" value="Duty description"/>
-			<property name="percentage" value="15.0"/>
+			<property name="percentage" value="100.0"/>
 			<property name="descriptor" ref="descriptor4"/>
 			
 		</bean>
@@ -685,7 +685,7 @@
 		<bean id="duty5" class="acme.entities.duties.Duty">
 			<property name="title" value="Duty 5"/>
 			<property name="description" value="Duty description"/>
-			<property name="percentage" value="15.0"/>
+			<property name="percentage" value="100.0"/>
 			<property name="descriptor" ref="descriptor5"/>
 			
 		</bean>
@@ -796,6 +796,15 @@
 		<property name="moment" value="2018/11/30 19:00"/>
 		<property name="body" value="Example of audit record 6"/>
 		<property name="job" ref="job1"/>
+		<property name="auditor" ref="auditor2Auditor"/>
+	</bean>
+	
+	<bean id="auditrecord7" class="acme.entities.auditrecord.Auditrecord">
+		<property name="title" value="Audit record 7"/>
+		<property name="isFinalMode" value="true"/>
+		<property name="moment" value="2018/11/30 19:00"/>
+		<property name="body" value="Example of audit record 7"/>
+		<property name="job" ref="job5"/>
 		<property name="auditor" ref="auditor2Auditor"/>
 	</bean>
 	
