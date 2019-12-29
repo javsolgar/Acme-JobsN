@@ -17,7 +17,7 @@ public class EmployerApplicationShowService implements AbstractShowService<Emplo
 	//	 Internal  state	-------------------------------------------------------------------------
 
 	@Autowired
-	EmployerApplicationRepository repository;
+	private EmployerApplicationRepository repository;
 
 
 	//	AbstractListService<Worker, Application> interface ------------------------------------------

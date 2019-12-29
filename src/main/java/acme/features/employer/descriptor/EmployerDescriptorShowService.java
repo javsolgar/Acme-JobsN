@@ -15,7 +15,7 @@ import acme.framework.services.AbstractShowService;
 public class EmployerDescriptorShowService implements AbstractShowService<Employer, Descriptor> {
 
 	@Autowired
-	EmployerDescriptorRepository repository;
+	private EmployerDescriptorRepository repository;
 
 
 	@Override

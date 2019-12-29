@@ -15,9 +15,9 @@
 	<acme:form-double code="employer.duty.form.label.percentage" path="percentage"/>
 
 	<acme:form-submit test="${command == 'create'}" code="employer.duty.form.button.create" action="/employer/duty/create?idDescriptor=${param.idDescriptor}"/>
-    <acme:form-submit test="${command == 'show'}" code="employer.duty.form.button.update" action="/employer/duty/update"/>
-	<acme:form-submit test="${command == 'update'}" code="employer.duty.form.button.update" action="/employer/duty/update"/>
-  	<acme:form-submit test ="${command == 'show'}" code="employer.duty.form.button.delete" action="/employer/duty/delete"/>
-	<acme:form-submit test ="${command == 'delete'}" code="employer.duty.form.button.delete" action="/employer/duty/delete"/>
+    <acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="employer.duty.form.button.update" action="/employer/duty/update"/>
+	<acme:form-submit test="${command == 'update' && finalMode == 'false'}" code="employer.duty.form.button.update" action="/employer/duty/update"/>
+  	<acme:form-submit test ="${command == 'show' && finalMode == 'false'}" code="employer.duty.form.button.delete" action="/employer/duty/delete"/>
+	<acme:form-submit test ="${command == 'delete' && finalMode == 'false'}" code="employer.duty.form.button.delete" action="/employer/duty/delete"/>
 	<acme:form-return code="employer.job.form.label.button.return"/>
 </acme:form>

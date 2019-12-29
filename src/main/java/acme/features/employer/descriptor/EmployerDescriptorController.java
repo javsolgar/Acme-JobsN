@@ -17,10 +17,10 @@ import acme.framework.controllers.AbstractController;
 public class EmployerDescriptorController extends AbstractController<Employer, Descriptor> {
 
 	@Autowired
-	EmployerDescriptorShowService	showService;
+	private EmployerDescriptorShowService	showService;
 
 	@Autowired
-	EmployerDescriptorUpdateService	updateService;
+	private EmployerDescriptorUpdateService	updateService;
 
 
 	@PostConstruct
