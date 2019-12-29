@@ -10,7 +10,7 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
-import acme.framework.entities.UserAccount;
+import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -92,7 +92,7 @@ public class AdministratorAuditorrequestUpdateService implements AbstractUpdateS
 		if (entity.getStatus().equals("accepted")) {
 
 			Auditor auditor;
-			UserAccount user;
+			Authenticated user;
 
 			user = entity.getUser();
 
@@ -100,7 +100,7 @@ public class AdministratorAuditorrequestUpdateService implements AbstractUpdateS
 			auditor.setFirm(entity.getFirm());
 			auditor.setRespStatement(entity.getRespStatement());
 
-			auditor.setUserAccount(user);
+			auditor.setUserAccount(user.getUserAccount());
 
 			this.repository.save(auditor);
 

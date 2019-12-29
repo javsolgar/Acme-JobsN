@@ -17,7 +17,6 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.Principal;
-import acme.framework.entities.UserAccount;
 import acme.framework.services.AbstractCreateService;
 
 @Service
@@ -94,7 +93,7 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		Configuration configuration;
 		String spamWords;
 		Double spamThreshold;
-		UserAccount user;
+		Authenticated user;
 		Collection<Auditorrequest> requests;
 		Integer id;
 
@@ -155,7 +154,7 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		Date now;
 		Principal principal;
 		Integer id;
-		UserAccount user;
+		Authenticated user;
 
 		principal = request.getPrincipal();
 		id = principal.getAccountId();

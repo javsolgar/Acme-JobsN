@@ -308,11 +308,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `user_account_messagethread` (
-       `user_account_id` integer not null,
-        `messagethread_id` integer not null
-    ) engine=InnoDB;
-
     create table `worker` (
        `id` integer not null,
         `version` integer not null,
@@ -369,9 +364,9 @@
        references `user_account` (`id`);
 
     alter table `auditorrequest` 
-       add constraint `FK2nu5ndvri71kk1avp7v79loqo` 
+       add constraint `FK48mm6hlb69dlcjnf43eiov74s` 
        foreign key (`user_id`) 
-       references `user_account` (`id`);
+       references `authenticated` (`id`);
 
     alter table `auditrecord` 
        add constraint `FKditgyx355sc4ye86w7tj22cq6` 
@@ -465,16 +460,6 @@
 
     alter table `sponsor` 
        add constraint FK_20xk0ev32hlg96kqynl6laie2 
-       foreign key (`user_account_id`) 
-       references `user_account` (`id`);
-
-    alter table `user_account_messagethread` 
-       add constraint `FK6yqqctsrjddklo56unt0r4tgh` 
-       foreign key (`messagethread_id`) 
-       references `messagethread` (`id`);
-
-    alter table `user_account_messagethread` 
-       add constraint `FK5590jid94qdluwlnsbr2w4tbx` 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
