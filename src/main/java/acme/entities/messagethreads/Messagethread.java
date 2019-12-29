@@ -36,13 +36,4 @@ public class Messagethread extends DomainEntity {
 	@ManyToOne
 	private Authenticated		creator;
 
-	//Relationships
-
-	/*
-	 * @NotNull
-	 *
-	 * @OneToMany(mappedBy = "messageThread")
-	 * private Collection<Message> messages;
-	 */
-	//select ua, mt from UserAccount ua join ua.messagethread mt group by mt;
 }

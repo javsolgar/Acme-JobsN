@@ -4,7 +4,6 @@ package acme.entities.dashboard;
 import java.io.Serializable;
 import java.util.List;
 
-import acme.features.administrator.dashboard.AdministratorDashboardRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,62 +11,60 @@ import lombok.Setter;
 @Setter
 public class Dashboard implements Serializable {
 
-	AdministratorDashboardRepository	repository;
-
 	//Serialization Identify -------------------------------------------------------------------------------------------
 
-	private static final long			serialVersionUID	= 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	//	Atributes	----------------------------------------------------------------------------------------------------
 
-	private Integer						totalAnnouncement;
+	private Integer				totalAnnouncement;
 
-	private Integer						totalInvestorsRecord;
+	private Integer				totalInvestorsRecord;
 
-	private Integer						totalCompanyRecords;
+	private Integer				totalCompanyRecords;
 
-	private Double						minRewardRequest;
+	private Double				minRewardRequest;
 
-	private Double						maxRewardRequest;
+	private Double				maxRewardRequest;
 
-	private Double						minRewardOffers;
+	private Double				minRewardOffers;
 
-	private Double						maxRewardOffers;
+	private Double				maxRewardOffers;
 
-	private List<Integer>				companysBySector;
+	private List<Integer>		companysBySector;
 
-	private List<String>				sectorsOfCompanys;
+	private List<String>		sectorsOfCompanys;
 
-	private List<Integer>				inverstorsBySector;
+	private List<Integer>		inverstorsBySector;
 
-	private List<String>				sectorsOfInverstors;
+	private List<String>		sectorsOfInverstors;
 
-	private Double						mediaRequest;
+	private Double				mediaRequest;
 
-	private Double						stdevRequest;
+	private Double				stdevRequest;
 
-	private Double						mediaOffer;
+	private Double				mediaOffer;
 
-	private Double						stdevOffer;
+	private Double				stdevOffer;
 
-	private List<Double>				jobsByFinalMode;
+	private List<Double>		jobsByFinalMode;
 
-	private List<String>				statusOfApplication;
+	private List<String>		statusOfApplication;
 
-	private List<Double>				applicationByStatus;
+	private List<Double>		applicationByStatus;
 
-	private Double						avgJobEmployer;
+	private Double				avgJobEmployer;
 
-	private Double						avgApplicationEmployer;
+	private Double				avgApplicationEmployer;
 
-	private Double						avgApplicationWorker;
+	private Double				avgApplicationWorker;
 
-	private List<Integer>				diasPending;
+	private List<Integer>		diasPending;
 
-	private List<Integer>				applicationPendingPerDay;
+	private List<Integer>		applicationPendingPerDay;
 
-	private List<Integer>				applicationAcceptedPerDay;
+	private List<Integer>		applicationAcceptedPerDay;
 
-	private List<Integer>				applicationRejectedPerDay;
+	private List<Integer>		applicationRejectedPerDay;
 
 }
