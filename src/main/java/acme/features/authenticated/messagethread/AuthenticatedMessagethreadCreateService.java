@@ -91,23 +91,26 @@ public class AuthenticatedMessagethreadCreateService implements AbstractCreateSe
 		spamWords = configuration.getSpamWords();
 		spamThreshold = configuration.getSpamThreshold();
 
-		hasTitle = entity.getTitle() != null;
-		errors.state(request, hasTitle, "title", "authenticated.messagethread.error.must-have-title");
+		if (!errors.hasErrors("title")) {
+			hasTitle = entity.getTitle() != null;
+			errors.state(request, hasTitle, "title", "authenticated.messagethread.error.must-have-title");
 
-		if (hasTitle) {
+			if (hasTitle) {
 
-			hasSpamTitle = Spamfilter.spamThreshold(entity.getTitle(), spamWords, spamThreshold);
-			errors.state(request, !hasSpamTitle, "title", "authenticated.messagethread.error.must-not-have-spam-title");
+				hasSpamTitle = Spamfilter.spamThreshold(entity.getTitle(), spamWords, spamThreshold);
+				errors.state(request, !hasSpamTitle, "title", "authenticated.messagethread.error.must-not-have-spam-title");
 
+			}
 		}
+		if (!errors.hasErrors("usernames")) {
+			hasUsernames = entity.getUsernames() != null && !entity.getUsernames().equals("");
+			errors.state(request, hasUsernames, "usernames", "authenticated.messagethread.error.must-have-usernames");
 
-		hasUsernames = entity.getUsernames() != null && !entity.getUsernames().equals("");
-		errors.state(request, hasUsernames, "usernames", "authenticated.messagethread.error.must-have-usernames");
+			if (hasUsernames) {
 
-		if (hasUsernames) {
-
-			existAllUsernames = this.existAllUsernames(entity.getUsernames());
-			errors.state(request, existAllUsernames, "usernames", "authenticated.messagethread.error.not-found-user");
+				existAllUsernames = this.existAllUsernames(entity.getUsernames());
+				errors.state(request, existAllUsernames, "usernames", "authenticated.messagethread.error.not-found-user");
+			}
 		}
 
 	}

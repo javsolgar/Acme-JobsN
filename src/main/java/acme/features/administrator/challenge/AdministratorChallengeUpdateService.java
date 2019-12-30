@@ -72,24 +72,29 @@ public class AdministratorChallengeUpdateService implements AbstractUpdateServic
 
 		dateNow = new Date(System.currentTimeMillis() - 1);
 
-		hasDeadline = entity.getDeadline() != null;
-		errors.state(request, hasDeadline, "deadline", "administrator.challenge.error.must-have-deadline");
+		if (!errors.hasErrors("deadline")) {
+			hasDeadline = entity.getDeadline() != null;
+			errors.state(request, hasDeadline, "deadline", "administrator.challenge.error.must-have-deadline");
 
-		if (hasDeadline) {
-			deadline = entity.getDeadline();
-			isFuture = dateNow.before(deadline);
-			errors.state(request, isFuture, "deadline", "administrator.challenge.error.must-be-future");
+			if (hasDeadline) {
+				deadline = entity.getDeadline();
+				isFuture = dateNow.before(deadline);
+				errors.state(request, isFuture, "deadline", "administrator.challenge.error.must-be-future");
 
+			}
 		}
-		hasGoldGoal = entity.getGoalGold() != null;
-		errors.state(request, hasGoldGoal, "goalGold", "administrator.challenge.error.must-have-goal");
-
-		hasSilverGoal = entity.getGoalSilver() != null;
-		errors.state(request, hasSilverGoal, "goalGold", "administrator.challenge.error.must-have-goal");
-
-		hasBronzeGoal = entity.getGoalBronze() != null;
-		errors.state(request, hasBronzeGoal, "goalGold", "administrator.challenge.error.must-have-goal");
-
+		if (!errors.hasErrors("goalGold")) {
+			hasGoldGoal = entity.getGoalGold() != null;
+			errors.state(request, hasGoldGoal, "goalGold", "administrator.challenge.error.must-have-goal");
+		}
+		if (!errors.hasErrors("goalSilver")) {
+			hasSilverGoal = entity.getGoalSilver() != null;
+			errors.state(request, hasSilverGoal, "goalSilver", "administrator.challenge.error.must-have-goal");
+		}
+		if (!errors.hasErrors("goalBronze")) {
+			hasBronzeGoal = entity.getGoalBronze() != null;
+			errors.state(request, hasBronzeGoal, "goalBronze", "administrator.challenge.error.must-have-goal");
+		}
 		hasGoldReward = entity.getRewardGold() != null;
 		errors.state(request, hasGoldReward, "rewardGold", "administrator.challenge.error.must-have-reward");
 

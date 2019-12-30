@@ -68,14 +68,16 @@ public class ProviderRequestCreateService implements AbstractCreateService<Provi
 
 		dateNow = new Date(System.currentTimeMillis() - 1);
 
-		hasDeadline = entity.getDeadLine() != null;
-		errors.state(request, hasDeadline, "deadLine", "provider.request.error.must-not-be-null");
+		if (!errors.hasErrors("deadline")) {
+			hasDeadline = entity.getDeadLine() != null;
+			errors.state(request, hasDeadline, "deadLine", "provider.request.error.must-not-be-null");
 
-		if (hasDeadline) {
-			deadLine = entity.getDeadLine();
-			isFuture = dateNow.before(deadLine);
-			errors.state(request, isFuture, "deadLine", "provider.request.error.must-be-future");
+			if (hasDeadline) {
+				deadLine = entity.getDeadLine();
+				isFuture = dateNow.before(deadLine);
+				errors.state(request, isFuture, "deadLine", "provider.request.error.must-be-future");
 
+			}
 		}
 
 		// Validación checkbox -----------------------------------------------------------------------------
@@ -85,30 +87,34 @@ public class ProviderRequestCreateService implements AbstractCreateService<Provi
 
 		// Validación ticker -----------------------------------------------------------------------------
 
-		hasTicker = entity.getTicker() != null;
-		errors.state(request, hasTicker, "ticker", "provider.request.error.tickerDuplicated", "");
+		if (!errors.hasErrors("ticker")) {
+			hasTicker = entity.getTicker() != null;
+			errors.state(request, hasTicker, "ticker", "provider.request.error.tickerDuplicated", "");
 
-		boolean ErrorPattern = entity.getTicker().matches("^[O][a-zA-Z]{4}[-][0-9]{5}$");
-		errors.state(request, ErrorPattern, "ticker", "provider.request.error.pattern-ticker");
+			boolean ErrorPattern = entity.getTicker().matches("^[R][a-zA-Z]{4}[-][0-9]{5}$");
+			errors.state(request, ErrorPattern, "ticker", "provider.request.error.pattern-ticker");
 
-		if (hasTicker) {
+			if (hasTicker) {
 
-			isDuplicated = this.repository.findOneByTicker(entity.getTicker()) != null;
-			errors.state(request, !isDuplicated, "ticker", "provider.request.error.tickerDuplicated");
+				isDuplicated = this.repository.findOneByTicker(entity.getTicker()) != null;
+				errors.state(request, !isDuplicated, "ticker", "provider.request.error.tickerDuplicated");
+			}
 		}
 
 		// Validación reward -----------------------------------------------------------------------------
 
-		hasReward = entity.getReward() != null;
-		errors.state(request, hasReward, "reward", "provider.request.error.not-reward");
+		if (!errors.hasErrors("reward")) {
+			hasReward = entity.getReward() != null;
+			errors.state(request, hasReward, "reward", "provider.request.error.not-reward");
 
-		if (hasReward) {
-			Money euro = new Money();
-			euro.setCurrency("€");
+			if (hasReward) {
+				Money euro = new Money();
+				euro.setCurrency("€");
 
-			isEuro = entity.getReward().getCurrency().equals(euro.getCurrency());
-			errors.state(request, isEuro, "reward", "provider.request.error.must-be-euro");
+				isEuro = entity.getReward().getCurrency().equals(euro.getCurrency());
+				errors.state(request, isEuro, "reward", "provider.request.error.must-be-euro");
 
+			}
 		}
 	}
 

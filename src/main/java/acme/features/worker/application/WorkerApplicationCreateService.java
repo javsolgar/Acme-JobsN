@@ -99,13 +99,13 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		alreadyApplicated = true;
 
 		for (Application a : result) {
-
 			if (a.getWorker().getId() == principal.getActiveRoleId()) {
 				alreadyApplicated = false;
 				break;
 			}
 
 		}
+
 		errors.state(request, alreadyApplicated, "reference", "worker.application.error.had-applicated");
 		if (alreadyApplicated) {
 			if (!errors.hasErrors("reference")) {
@@ -125,9 +125,8 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 				}
 			}
 
-		boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
-		errors.state(request, ErrorPattern, "status", "worker.application.error.pattern-status");
-
+			boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
+			errors.state(request, ErrorPattern, "status", "worker.application.error.pattern-status");
 
 			if (!errors.hasErrors("skills")) {
 				hasSkills = entity.getSkills() != null;
