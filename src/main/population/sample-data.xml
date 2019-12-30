@@ -546,7 +546,7 @@
 	
 	
 	<!-- Jobs -->
-		<!-- Descriptors and duties -->
+	
 		
 		<bean id="job1" class="acme.entities.jobs.Job">
 		<property name="reference" value="EMPA-JOBA"/>
@@ -557,7 +557,6 @@
 		<property name="finalMode" value="true"/>
 		<property name="hasApplication" value ="true"/>
 		<property name="employer" ref="employer1Employer"/>
-		<property name="auditor" ref="auditor1Auditor"/>
 		
 
 	</bean>
@@ -571,7 +570,6 @@
 		<property name="finalMode" value="true"/>
 		<property name="hasApplication" value ="true"/>
 		<property name="employer" ref="employer2Employer"/>
-		<property name="auditor" ref="auditor1Auditor"/>
 
 	</bean>
 	
@@ -584,7 +582,6 @@
 		<property name="finalMode" value="false"/>
 		<property name="hasApplication" value ="false"/>
 		<property name="employer" ref="employer1Employer"/>
-		<property name="auditor" ref="auditor1Auditor"/>
 
 	</bean>
 	
@@ -597,7 +594,6 @@
 		<property name="finalMode" value="true"/>
 		<property name="hasApplication" value ="true"/>
 		<property name="employer" ref="employer2Employer"/>
-		<property name="auditor" ref="auditor2Auditor"/>
 
 	</bean>
 	
@@ -610,10 +606,9 @@
 		<property name="finalMode" value="true"/>
 		<property name="hasApplication" value ="true"/>
 		<property name="employer" ref="employer1Employer"/>
-		<property name="auditor" ref="auditor2Auditor"/>
 
 	</bean>
-		
+			<!-- Descriptors and duties -->
 			
 		<bean id="descriptor1" class="acme.entities.descriptor.Descriptor">
 			<property name="description" value="Descriptor1 description"/>
@@ -798,6 +793,38 @@
 		<property name="auditor" ref="auditor2Auditor"/>
 	</bean>
 	
+		<!-- Participate in -->
+	<bean id="participatein01" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job3"/>
+		<property name="auditor" ref="auditor1Auditor"/>
+	</bean>
+	
+	<bean id="participatein02" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job4"/>
+		<property name="auditor" ref="auditor2Auditor"/>
+	</bean>
+	<bean id="participatein03" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job2"/>
+		<property name="auditor" ref="auditor1Auditor"/>
+	</bean>
+	<bean id="participatein04" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job3"/>
+		<property name="auditor" ref="auditor2Auditor"/>
+	</bean>
+	<bean id="participatein05" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job1"/>
+		<property name="auditor" ref="auditor1Auditor"/>
+	</bean>
+	<bean id="participatein06" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job1"/>
+		<property name="auditor" ref="auditor2Auditor"/>
+	</bean>
+	<bean id="participatein07" class="acme.entities.participatein.Participatein">
+		<property name="job" ref="job5"/>
+		<property name="auditor" ref="auditor2Auditor"/>
+	</bean>
+	
+	
 	<!-- Messages & threads -->
 	<bean id="messagethread1" class="acme.entities.messagethreads.Messagethread">
 		<property name="title" value="Hilo de mensajes 1"/>
@@ -806,6 +833,7 @@
 		<property name="creator" ref="employer1Authenticated"/>
 	</bean>
 	
+	<!-- Participates -->
 	<bean id="participates01" class="acme.entities.participates.Participates">
 		<property name="messagethread" ref="messagethread1"/>
 		<property name="authenticated" ref="employer1Authenticated"/>
@@ -974,5 +1002,6 @@
 			<property name="sector" value="Luxury"/>
 			<property name="userAccount" ref="Consumer2UserAccount"/>
 	</bean>
+	
 
 </beans>

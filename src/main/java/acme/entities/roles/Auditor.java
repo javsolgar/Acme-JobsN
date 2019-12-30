@@ -22,5 +22,4 @@ public class Auditor extends UserRole {
 	@NotBlank
 	@Column(length = 1024)
 	private String				respStatement;
-
 }
