@@ -66,51 +66,56 @@ public class ConsumerOffersCreateService implements AbstractCreateService<Consum
 		Date dateNow, deadline;
 
 		dateNow = new Date(System.currentTimeMillis() - 1);
+		if (!errors.hasErrors("deadline")) {
+			hasDeadline = entity.getDeadline() != null;
+			errors.state(request, hasDeadline, "deadline", "consumer.offers.error.must-have-deadline");
 
-		hasDeadline = entity.getDeadline() != null;
-		errors.state(request, hasDeadline, "deadline", "consumer.offers.error.must-have-deadline");
+			if (hasDeadline) {
+				deadline = entity.getDeadline();
+				isFuture = dateNow.before(deadline);
+				errors.state(request, isFuture, "deadline", "consumer.offers.error.must-be-future");
 
-		if (hasDeadline) {
-			deadline = entity.getDeadline();
-			isFuture = dateNow.before(deadline);
-			errors.state(request, isFuture, "deadline", "consumer.offers.error.must-be-future");
-
-		}
-
-		hasTicker = entity.getTicker() != null;
-		errors.state(request, hasTicker, "ticker", "consumer.offers.error.tickerDuplicated");
-
-		boolean ErrorPattern = entity.getTicker().matches("^[O][a-zA-Z]{4}[-][0-9]{5}$");
-		errors.state(request, ErrorPattern, "ticker", "consumer.offers.error.pattern-ticker");
-
-		if (hasTicker) {
-
-			isDuplicated = this.repository.findOneByTicker(entity.getTicker()) != null;
-			errors.state(request, !isDuplicated, "ticker", "consumer.offers.error.tickerDuplicated");
-		}
-
-		hasMajorRange = entity.getMajorRange() != null;
-		errors.state(request, hasMajorRange, "majorRange", "consumer.offers.error.not-range");
-
-		hasLowerRange = entity.getLowerRange() != null;
-		errors.state(request, hasLowerRange, "lowerRange", "consumer.offers.error.not-range");
-
-		if (hasLowerRange && hasMajorRange) {
-			Money euro = new Money();
-			euro.setCurrency("€");
-
-			isEuroLower = entity.getLowerRange().getCurrency().equals(euro.getCurrency());
-			errors.state(request, isEuroLower, "lowerRange", "consumer.offers.error.must-be-euro");
-
-			isEuroMajor = entity.getMajorRange().getCurrency().equals(euro.getCurrency());
-			errors.state(request, isEuroMajor, "majorRange", "consumer.offers.error.must-be-euro");
-
-			if (isEuroLower && isEuroMajor) {
-
-				isRange = entity.getMajorRange().getAmount() > entity.getLowerRange().getAmount();
-				errors.state(request, isRange, "majorRange", "consumer.offers.error.notRange");
 			}
+		}
 
+		if (!errors.hasErrors("ticker")) {
+			hasTicker = entity.getTicker() != null;
+			errors.state(request, hasTicker, "ticker", "consumer.offers.error.tickerDuplicated");
+
+			boolean ErrorPattern = entity.getTicker().matches("^[O][a-zA-Z]{4}[-][0-9]{5}$");
+			errors.state(request, ErrorPattern, "ticker", "consumer.offers.error.pattern-ticker");
+
+			if (hasTicker) {
+
+				isDuplicated = this.repository.findOneByTicker(entity.getTicker()) != null;
+				errors.state(request, !isDuplicated, "ticker", "consumer.offers.error.tickerDuplicated");
+			}
+		}
+
+		if (!errors.hasErrors("majorRange") && !errors.hasErrors("lowerRange")) {
+			hasMajorRange = entity.getMajorRange() != null;
+			errors.state(request, hasMajorRange, "majorRange", "consumer.offers.error.not-range");
+
+			hasLowerRange = entity.getLowerRange() != null;
+			errors.state(request, hasLowerRange, "lowerRange", "consumer.offers.error.not-range");
+
+			if (hasLowerRange && hasMajorRange) {
+				Money euro = new Money();
+				euro.setCurrency("€");
+
+				isEuroLower = entity.getLowerRange().getCurrency().equals(euro.getCurrency());
+				errors.state(request, isEuroLower, "lowerRange", "consumer.offers.error.must-be-euro");
+
+				isEuroMajor = entity.getMajorRange().getCurrency().equals(euro.getCurrency());
+				errors.state(request, isEuroMajor, "majorRange", "consumer.offers.error.must-be-euro");
+
+				if (isEuroLower && isEuroMajor) {
+
+					isRange = entity.getMajorRange().getAmount() > entity.getLowerRange().getAmount();
+					errors.state(request, isRange, "majorRange", "consumer.offers.error.notRange");
+				}
+
+			}
 		}
 
 		isAccepted = request.getModel().getString("accept") != "" && request.getModel().getString("accept") != null;
