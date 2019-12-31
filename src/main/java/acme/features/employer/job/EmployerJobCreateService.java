@@ -137,18 +137,19 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 
 		hasDescriptor = descripcion != null && descripcion != "";
 		errors.state(request, hasDescriptor, "description", "employer.job.error.must-have-descriptor");
-		if (hasDescriptor) {
-			hasSpamDescriptor = Spamfilter.spamThreshold(descripcion, spamWords, spamThreshold);
-			errors.state(request, !hasSpamDescriptor, "description", "employer.job.error.must-not-have-spam-descriptor");
+
+		if (!errors.hasErrors("deadline")) {
+			if (hasDescriptor) {
+				hasSpamDescriptor = Spamfilter.spamThreshold(descripcion, spamWords, spamThreshold);
+				errors.state(request, !hasSpamDescriptor, "description", "employer.job.error.must-not-have-spam-descriptor");
+			}
 		}
 
 		// Validation reference ----------------------------------------------------------------------------------------------------------
 		if (!errors.hasErrors("title")) {
 			hasReference = entity.getReference() != null;
 			errors.state(request, hasReference, "reference", "employer.job.error.must-have-reference");
-
 			if (hasReference) {
-
 				isDuplicated = this.repository.findOneJobByReference(entity.getReference()) == null;
 				errors.state(request, isDuplicated, "reference", "employer.job.error.must-be-not-duplicated-reference");
 			}

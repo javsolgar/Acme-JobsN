@@ -94,8 +94,10 @@ public class AuthenticatedMessageCreateService implements AbstractCreateService<
 		spamWords = configuration.getSpamWords();
 		spamThreshold = configuration.getSpamThreshold();
 
-		boolean isAccepted = request.getModel().getString("accept") != "" && request.getModel().getString("accept") != null;
-		errors.state(request, isAccepted, "accept", "authenticated.message.error.must-accept");
+		if (!errors.hasErrors("accept")) {
+			boolean isAccepted = request.getModel().getString("accept") != "" && request.getModel().getString("accept") != null;
+			errors.state(request, isAccepted, "accept", "authenticated.message.error.must-accept");
+		}
 
 		if (!errors.hasErrors("title")) {
 
