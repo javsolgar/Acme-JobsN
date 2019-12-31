@@ -61,10 +61,6 @@
 
     alter table `job` 
        drop 
-       foreign key `FK15emyu82ye1j9lfl1wpo1i1ee`;
-
-    alter table `job` 
-       drop 
        foreign key `FK3rxjf8uh6fh2u990pe8i2at0e`;
 
     alter table `message` 
@@ -82,6 +78,14 @@
     alter table `noncomercialbanner` 
        drop 
        foreign key `FKiqlwh7t99w47gee8as9xvk5xt`;
+
+    alter table `participatein` 
+       drop 
+       foreign key `FKe840v4bo3khcf20ud5hi49eqn`;
+
+    alter table `participatein` 
+       drop 
+       foreign key `FKasttc8nkvw2of9y4x2mpt16os`;
 
     alter table `participates` 
        drop 
@@ -148,6 +152,8 @@
     drop table if exists `noncomercialbanner`;
 
     drop table if exists `offers`;
+
+    drop table if exists `participatein`;
 
     drop table if exists `participates`;
 

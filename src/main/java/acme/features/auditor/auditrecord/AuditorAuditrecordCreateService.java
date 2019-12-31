@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.auditrecord.Auditrecord;
 import acme.entities.configuration.Configuration;
 import acme.entities.jobs.Job;
+import acme.entities.participatein.Participatein;
 import acme.entities.roles.Auditor;
 import acme.features.utiles.ConfigurationRepository;
 import acme.features.utiles.Spamfilter;
@@ -141,10 +142,10 @@ public class AuditorAuditrecordCreateService implements AbstractCreateService<Au
 		Principal principal;
 		Integer idUserAccount;
 		Auditor auditor;
+		Participatein participatein;
 
 		principal = request.getPrincipal();
 		idUserAccount = principal.getActiveRoleId();
-
 		auditor = this.repository.findAuditorById(idUserAccount);
 
 		moment = new Date(System.currentTimeMillis() - 1);
@@ -153,8 +154,11 @@ public class AuditorAuditrecordCreateService implements AbstractCreateService<Au
 		int job = request.getModel().getInteger("idJob");
 		entity.setJob(this.repository.findJobByRef(job));
 		entity.setAuditor(auditor);
+		participatein = this.repository.getParticipateinByJobId(job);
 
+		participatein.setAuditor(auditor);
 		this.repository.save(entity);
+		this.repository.save(participatein);
 
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.configuration.Configuration;
 import acme.entities.descriptor.Descriptor;
 import acme.entities.jobs.Job;
+import acme.entities.participatein.Participatein;
 import acme.entities.roles.Employer;
 import acme.features.utiles.ConfigurationRepository;
 import acme.features.utiles.Spamfilter;
@@ -163,11 +164,15 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 
 		Descriptor descriptor;
 		String description;
+		Participatein participatein = new Participatein();
 
 		entity.setHasApplication(false);
 		entity.setFinalMode(false);
 
+		participatein.setJob(entity);
+
 		this.repository.save(entity);
+		this.repository.save(participatein);
 
 		description = request.getModel().getString("description");
 		descriptor = new Descriptor();

@@ -1,13 +1,11 @@
 
 package acme.features.notauditor.job;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.auditrecord.Auditrecord;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Auditor;
 import acme.framework.components.Model;
@@ -41,27 +39,8 @@ public class NotauditorJobListMineService implements AbstractListService<Auditor
 	@Override
 	public Collection<Job> findMany(final Request<Job> request) {
 		assert request != null;
-		Collection<Job> res = new ArrayList<Job>();
-		Collection<Auditrecord> result;
-		Principal principal;
-		Integer idPrincipal;
-		Auditor auditor;
+		Principal principal = request.getPrincipal();
 
-		principal = request.getPrincipal();
-		idPrincipal = principal.getActiveRoleId();
-		result = this.repository.findAuditrecordsAll();
-		res = this.repository.findAllJobs();
-		auditor = this.repository.findAuditorJobById(idPrincipal);
-
-		for (Auditrecord ar : result) {
-			if (ar.getAuditor().equals(auditor) && res.contains(ar.getJob())) {
-
-				res.remove(ar.getJob());
-
-			}
-		}
-
-		return res;
+		return this.repository.findNotJobs(principal.getActiveRoleId());
 	}
-
 }

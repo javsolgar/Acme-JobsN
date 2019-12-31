@@ -204,7 +204,6 @@
         `salary_amount` double precision,
         `salary_currency` varchar(255),
         `title` varchar(255),
-        `auditor_id` integer,
         `employer_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
@@ -255,6 +254,14 @@
         `moment` datetime(6),
         `ticker` varchar(255),
         `title` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `participatein` (
+       `id` integer not null,
+        `version` integer not null,
+        `auditor_id` integer,
+        `job_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -414,11 +421,6 @@
        references `user_account` (`id`);
 
     alter table `job` 
-       add constraint `FK15emyu82ye1j9lfl1wpo1i1ee` 
-       foreign key (`auditor_id`) 
-       references `auditor` (`id`);
-
-    alter table `job` 
        add constraint `FK3rxjf8uh6fh2u990pe8i2at0e` 
        foreign key (`employer_id`) 
        references `employer` (`id`);
@@ -442,6 +444,16 @@
        add constraint `FKiqlwh7t99w47gee8as9xvk5xt` 
        foreign key (`sponsor_id`) 
        references `sponsor` (`id`);
+
+    alter table `participatein` 
+       add constraint `FKe840v4bo3khcf20ud5hi49eqn` 
+       foreign key (`auditor_id`) 
+       references `auditor` (`id`);
+
+    alter table `participatein` 
+       add constraint `FKasttc8nkvw2of9y4x2mpt16os` 
+       foreign key (`job_id`) 
+       references `job` (`id`);
 
     alter table `participates` 
        add constraint `FK2v2b6kxya4od7kymllfa9iv0v` 

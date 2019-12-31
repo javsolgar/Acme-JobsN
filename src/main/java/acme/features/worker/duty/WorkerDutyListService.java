@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.descriptor.Descriptor;
 import acme.entities.duties.Duty;
 import acme.entities.roles.Worker;
-import acme.features.authenticated.job.AuthenticatedJobRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractListService;
@@ -18,10 +17,7 @@ import acme.framework.services.AbstractListService;
 public class WorkerDutyListService implements AbstractListService<Worker, Duty> {
 
 	@Autowired
-	private WorkerDutyRepository		repository;
-
-	@Autowired
-	private AuthenticatedJobRepository	repositoryJob;
+	private WorkerDutyRepository repository;
 
 
 	@Override
