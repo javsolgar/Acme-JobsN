@@ -6,6 +6,7 @@ import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.challenget.Challenget;
 import acme.entities.configuration.Configuration;
 import acme.entities.descriptor.Descriptor;
 import acme.entities.jobs.Job;
@@ -138,7 +139,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		hasDescriptor = descripcion != null && descripcion != "";
 		errors.state(request, hasDescriptor, "description", "employer.job.error.must-have-descriptor");
 
-		if (!errors.hasErrors("deadline")) {
+		if (!errors.hasErrors("description")) {
 			if (hasDescriptor) {
 				hasSpamDescriptor = Spamfilter.spamThreshold(descripcion, spamWords, spamThreshold);
 				errors.state(request, !hasSpamDescriptor, "description", "employer.job.error.must-not-have-spam-descriptor");
@@ -155,6 +156,19 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 			}
 		}
 
+		// Validation text ----------------------------------------------------------------------------------------------------------
+
+		String text = request.getModel().getString("text").trim();
+		boolean hasText = text != null && text != "";
+		errors.state(request, hasText, "text", "employer.job.error.must-have-text");
+
+		if (!errors.hasErrors("text")) {
+			if (hasText) {
+				Boolean hasSpamText = Spamfilter.spamThreshold(text, spamWords, spamThreshold);
+				errors.state(request, !hasSpamText, "text", "employer.job.error.must-not-have-spam-text");
+			}
+		}
+
 	}
 
 	@Override
@@ -165,6 +179,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		Descriptor descriptor;
 		String description;
 		Participatein participatein = new Participatein();
+		Challenget challenget = new Challenget();
 
 		entity.setHasApplication(false);
 		entity.setFinalMode(false);
@@ -173,6 +188,13 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 
 		this.repository.save(entity);
 		this.repository.save(participatein);
+
+		challenget.setJob(entity);
+		challenget.setText(request.getModel().getString("text"));
+		if (request.getModel().getString("linkInfo") != null) {
+			challenget.setLinkInfo(request.getModel().getString("linkInfo"));
+		}
+		this.repository.save(challenget);
 
 		description = request.getModel().getString("description");
 		descriptor = new Descriptor();

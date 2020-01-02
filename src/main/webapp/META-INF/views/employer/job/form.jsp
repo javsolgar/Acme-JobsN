@@ -19,6 +19,8 @@
 	
 	<jstl:if test="${command == 'create'}">
 	<acme:form-textarea code="employer.job.form.label.description" path="description"/>
+	<acme:form-textarea code="employer.job.form.label.text" path="text"/>
+	<acme:form-textbox code="employer.job.form.label.linkInfo" path="linkInfo"/>
 	</jstl:if>
 	
 	<acme:form-moment code="employer.job.form.label.deadline" path="deadline"/>
@@ -49,6 +51,7 @@
 	<jstl:set var="jobId" value="${id}"/>
 	<jstl:if test="${command != 'create'}">
 	<h4><acme:menu-suboption code="employer.job.form.label.duties" action="/employer/descriptor/show?jobId=${jobId}&fm=${fm}"/></h4>
+    <h4><acme:menu-suboption code="employer.job.form.label.challenget" action="/employer/challenget/show?jobId=${jobId}"/></h4>
 	<jstl:if test="${finalMode == true && command == 'show'}">
   	<h4><acme:menu-suboption code="employer.job.form.label.auditRecords" action="/employer/auditrecord/list_mine?id=${idJob}"/></h4>
   	</jstl:if>

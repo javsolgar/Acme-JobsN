@@ -675,7 +675,36 @@
 			
 		</bean>
 		
-		
+		<!--  Challenget -->
+			<bean id="challenget1" class="acme.entities.challenget.Challenget">
+			<property name="text" value="Challenget1 text"/>
+		    <property name="linkInfo"><null/></property>
+	  		<property name="job" ref="job1"/>
+			</bean>
+			
+			<bean id="challenget2" class="acme.entities.challenget.Challenget">
+			<property name="text" value="Challenget2 text"/>
+			<property name="linkInfo" value="http://www.example.com"/>
+			<property name="job" ref="job2"/>
+			</bean>
+			
+			<bean id="challenget3" class="acme.entities.challenget.Challenget">
+			<property name="text" value="Challenget3 text"/>
+		   <property name="linkInfo"><null/></property>
+			<property name="job" ref="job3"/>
+			</bean>
+			
+			<bean id="challenget4" class="acme.entities.challenget.Challenget">
+			<property name="text" value="Challenget4 text"/>
+			<property name="linkInfo" value="http://www.example.com"/>
+			<property name="job" ref="job4"/>
+			</bean>
+			
+			<bean id="challenget5" class="acme.entities.challenget.Challenget">
+			<property name="text" value="Challenget5 text"/>
+	    	<property name="linkInfo"><null/></property>
+			<property name="job" ref="job5"/>
+			</bean>
 	
 		
 		

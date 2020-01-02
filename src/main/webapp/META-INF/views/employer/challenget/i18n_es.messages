@@ -1,0 +1,9 @@
+employer.challenget.form.label.jobTitle = Título deel trabajo de este deber:
+employer.challenget.form.label.jobId = Id del trabajo de este deber:
+employer.challenget.form.label.text = Texto:
+employer.challenget.form.label.linkInfo = Más información:
+employer.challenget.form.label.button.return = Volver
+
+employer.challenget.error.must-have-description = El challenget debe de tener un texto
+employer.challenget.error.must-not-be-spam = El texto no puede tener spam
+

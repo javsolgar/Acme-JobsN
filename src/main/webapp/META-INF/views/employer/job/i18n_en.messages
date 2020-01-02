@@ -14,7 +14,10 @@ employer.job.form.label.finalMode.false = No
 employer.job.form.label.finalMode.true = Yes
 employer.job.form.label.duties = Click here to see the descriptor
 employer.job.form.label.auditRecords = Click here to see the list of audit records of the job
+employer.job.form.label.challenget= Click here to see the challenge
 employer.job.form.label.description = Description:
+employer.job.form.label.text = Text:
+employer.job.form.label.linkInfo = Link Info:
 administrator.auditorrequest.form.label.moment = Moment:
 employer.job.form.button.update = Update
 employer.job.form.button.create = Create
@@ -30,7 +33,8 @@ employer.job.error.must-be-future = The deadline must at least one week in futur
 employer.job.error.must-have-reference = The job must have a reference
 employer.job.error.must-be-not-duplicated-reference = The job can not have a duplicated reference
 employer.job.error.must-have-descriptor = The job must have a description
-employer.job.error.must-not-have-spam-descriptor = The description of the job must not be spam
+employer.job.error.must-have-text = The job must have a text
+employer.job.error.must-not-have-spam-text = The text of the job must not be spam
 employer.job.error.must-100 = The percentage of the duties must sum 100%
 
 

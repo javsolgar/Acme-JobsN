@@ -106,6 +106,15 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `challenget` (
+       `id` integer not null,
+        `version` integer not null,
+        `link_info` varchar(255),
+        `text` varchar(1024),
+        `job_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `comercialbanner` (
        `id` integer not null,
         `version` integer not null,
@@ -389,6 +398,11 @@
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `challenget` 
+       add constraint `FKas3ubb59q663y9ai3qeom7vm` 
+       foreign key (`job_id`) 
+       references `job` (`id`);
 
     alter table `comercialbanner` 
        add constraint `FKcvbsmt5226xsmf6kxc5p8leal` 
