@@ -16,6 +16,10 @@ employer.application.form.label.moment = Moment:
 employer.application.form.label.reference = Reference:
 employer.application.form.label.justification = Justification:
 employer.application.form.label.statement = Statement:
+employer.application.form.message.answer = Answer to the job challenge
+employer.application.form.label.answer = Answer:
+employer.application.form.label.link = Link:
+employer.application.form.label.repass = Password:
 
 employer.application.form.label.message = Change status of application:
 
@@ -26,5 +30,6 @@ employer.application.error.pattern-status=It must be pending, accepted or reject
 
 employer.request.error.must-justificated = The rejected application must have a mandatory justification
 worker.application.error.had-applicated = You have already applicated to this job
+employer.application.error.not-equal-pass = Password do not match
 
 

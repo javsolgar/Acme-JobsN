@@ -54,7 +54,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "reference", "title", "deadline", "salary", "moreInfo");
+		request.unbind(entity, model, "reference", "title", "deadline", "salary", "moreInfo", "textChallenge", "link");
 
 	}
 
@@ -73,6 +73,8 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		employer = this.repository.findOneEmployerById(employerId);
 
 		result.setEmployer(employer);
+		result.setHasChallenge(true);
+		result.setFinalMode(false);
 
 		return result;
 	}
@@ -155,6 +157,18 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 			}
 		}
 
+		if (!errors.hasErrors("link")) {
+			boolean hasLink = entity.getLink() != null && entity.getLink() != "";
+			if (hasLink && !errors.hasErrors("textChallenge")) {
+				boolean hasTextChallenge = entity.getTextChallenge() != null && entity.getTextChallenge().trim() != "";
+				errors.state(request, hasTextChallenge, "textChallenge", "employer.job.error.must-have-text");
+				if (entity.getTextChallenge() != null) {
+					boolean hasSpamText = Spamfilter.spamThreshold(entity.getTextChallenge(), spamWords, spamThreshold);
+					errors.state(request, !hasSpamText, "textChallenge", "employer.job.error.must-not-have-spam-textChallenge");
+				}
+			}
+		}
+
 	}
 
 	@Override
@@ -170,6 +184,9 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		entity.setFinalMode(false);
 
 		participatein.setJob(entity);
+		if (entity.getTextChallenge() != null && entity.getTextChallenge().trim() != "") {
+			entity.setHasChallenge(true);
+		}
 
 		this.repository.save(entity);
 		this.repository.save(participatein);

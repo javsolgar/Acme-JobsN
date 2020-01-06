@@ -38,7 +38,7 @@ public class NotauditorJobShowService implements AbstractShowService<Auditor, Jo
 		assert model != null;
 
 		request.unbind(entity, model, "reference", "title", "deadline");
-		request.unbind(entity, model, "salary", "moreInfo", "finalMode");
+		request.unbind(entity, model, "salary", "moreInfo", "finalMode", "textChallenge", "link");
 	}
 
 	@Override

@@ -1,3 +1,5 @@
+administrator.dashboard.form.label.ratioChallenge = Ratio de trabajos que tienen retos
+administrator.dashboard.form.label.ratioProtected = Ratio de aplicaciones protegidas por contraseña
 administrator.dashboard.form.title.chartInverstors = Cantidad de inversores por sector:
 administrator.dashboard.form.title.chartCompanys = Cantidad de compañías por sector:
 administrator.dashboard.form.title.chartJobs = Ratio de status de los trabajos:

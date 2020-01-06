@@ -57,6 +57,20 @@ public class Application extends DomainEntity {
 
 	private String				justification;
 
+	@Column(length = 1024)
+	private String				answer;
+
+	private String				link;
+
+	@Pattern(regexp = "^((?=(?:.*\\p{L}){4})(?=(?:.*\\p{N}){2,})(?=(?:.*\\p{P}){2,}).{8,})?$", message = "Error")
+	private String				password;
+
+	private boolean				hasAnswer;
+
+	private boolean				hasPassword;
+
+	private boolean				hasBeenProtected;
+
 	//	Relationships -------------------------------------------------------------------------
 
 	@NotNull

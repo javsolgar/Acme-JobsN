@@ -10,6 +10,26 @@
 	<acme:form-moment code="employer.application.form.label.moment" path="moment" readonly="true"/>
 	<acme:form-textbox code="employer.application.form.label.reference" path="reference" readonly="true"/>
 	<acme:form-textarea code="employer.application.form.label.statement" path="statement" readonly="true"/>
+	<acme:form-hidden path="hasAnswer"/>
+	<acme:form-hidden path="hasPassword"/>
+	
+	<jstl:if test="${hasAnswer==true && hasPassword==false && command=='show'}">
+	<h4><acme:message code="employer.application.form.message.answer"/></h4>
+	<acme:form-textarea code="employer.application.form.label.answer" path="answer"/>
+	<acme:form-textbox code="employer.application.form.label.link" path="link"/>
+	</jstl:if>
+	
+	<jstl:if test="${status=='pending'}">
+	<jstl:if test="${hasAnswer==true && hasPassword==true && command=='show'}">
+	<acme:form-textbox code="employer.application.form.label.repass" path="repass"/>
+	</jstl:if>
+	</jstl:if>
+	
+	<jstl:if test="${hasAnswer==true && hasPassword==true && command=='update'}">
+	<acme:form-textbox code="employer.application.form.label.repass" path="repass"/>
+	</jstl:if>
+	
+	
 	
 	<jstl:if test="${status == 'pending' && command == 'show'}">
 	<h3><acme:message code="employer.application.form.label.message"/></h3>

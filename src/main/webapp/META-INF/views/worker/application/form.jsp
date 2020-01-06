@@ -17,6 +17,27 @@
 	<jstl:if test="${status != 'pending'}">
 		<acme:form-textbox code="worker.application.form.label.justification" path="justification"/>
 	</jstl:if>
-	<acme:form-submit test ="${command == 'create'}" code="worker.application.form.label.button.create" action="/worker/application/create?jobId=${param.jobId}"/>
+	<jstl:if test="${param.hasChallenge=='true' }">
+	<jstl:if test="${command == 'create' }">
+	<h4><acme:message code="worker.application.form.label.answerCreate"/></h4>
+	<acme:form-textarea code="worker.application.form.label.answer" path="answer"/>
+	<acme:form-textbox code="worker.application.form.label.link" path="link"/>
+	<acme:form-textbox code="worker.applicaiton.form.label.passwordCreate" path="password"/>
+	</jstl:if>
+	</jstl:if>
+	<jstl:if test="${command=='show'}">
+	<jstl:if test="${hasPassword==true }">
+		<h4><acme:message code="worker.application.form.label.answerShow"/></h4>
+		<acme:form-textbox code="worker.application.form.label.password" path="password"/>
+		<acme:form-textarea code="worker.application.form.label.answer" path="answer"/>
+		<acme:form-textbox code="worker.application.form.label.link" path="link"/>
+	</jstl:if>
+	<jstl:if test="${hasPassword==false && hasAnswer==true}">
+		<h4><acme:message code="worker.application.form.label.answerShow"/></h4>
+		<acme:form-textarea code="worker.application.form.label.asnwer" path="answer"/>
+		<acme:form-textbox code="worker.application.form.label.link" path="link"/>
+	</jstl:if>
+	</jstl:if>
+	<acme:form-submit test ="${command == 'create'}" code="worker.application.form.label.button.create" action="/worker/application/create?jobId=${param.jobId}&hasChallenge=${param.hasChallenge}"/>
 	<acme:form-return code="worker.application.form.label.button.return"/>
 </acme:form>

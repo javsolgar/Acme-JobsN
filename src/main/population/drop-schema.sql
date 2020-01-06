@@ -135,6 +135,8 @@
 
     drop table if exists `consumer`;
 
+    drop table if exists `derivatedjob`;
+
     drop table if exists `descriptor`;
 
     drop table if exists `duty`;

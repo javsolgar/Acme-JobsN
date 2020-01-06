@@ -12,6 +12,10 @@ employer.job.form.label.moreInfo = More info:
 employer.job.form.label.finalMode = Publish:
 employer.job.form.label.finalMode.false = No
 employer.job.form.label.finalMode.true = Yes
+employer.job.form.label.challengeShow = Challenge
+employer.job.form.label.challengeCreate = You can create an optional XXXX(if then, text must not be blank)
+employer.job.form.label.textChallenge = Text of the challenge:
+employer.job.form.label.link = Link with info about the challenge:
 employer.job.form.label.duties = Click here to see the descriptor
 employer.job.form.label.auditRecords = Click here to see the list of audit records of the job
 employer.job.form.label.description = Description:
@@ -32,5 +36,7 @@ employer.job.error.must-be-not-duplicated-reference = The job can not have a dup
 employer.job.error.must-have-descriptor = The job must have a description
 employer.job.error.must-not-have-spam-descriptor = The description of the job must not be spam
 employer.job.error.must-100 = The percentage of the duties must sum 100%
+employer.job.error.must-have-text = If you want to have an XXXX, text must not be null
+employer.job.error.must-not-have-spam-textChallenge = Text must not be spam
 
 

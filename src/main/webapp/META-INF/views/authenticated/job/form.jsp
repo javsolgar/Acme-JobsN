@@ -9,6 +9,11 @@
 	<acme:form-moment code="authenticated.job.form.label.deadline" path="deadline"/>
 	<acme:form-money code="authenticated.job.form.label.salary" path="salary"/>
 	<acme:form-money code="authenticated.job.form.label.moreInfo" path="moreInfo"/>
+	<jstl:if test="${hasChallenge==true}">
+	<h4><acme:message code="authenticated.job.form.label.challengeShow"/></h4>
+	<acme:form-textarea code="authenticated.job.form.label.textChallenge" path="textChallenge"/>
+	<acme:form-textbox code="authenticated.job.form.label.link" path="link"/>
+	</jstl:if>
 	<jstl:set var="idJob" value="${id}"/>
 	<jstl:set var="jobId" value="${id}"/>
 	<h4><acme:menu-suboption code="authenticated.job.form.label.duties" action="/authenticated/descriptor/show?jobId=${jobId}"/></h4>

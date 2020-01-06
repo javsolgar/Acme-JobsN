@@ -9,6 +9,18 @@
 	<acme:form-moment code="authenticated.job.form.label.deadline" path="deadline"/>
 	<acme:form-money code="authenticated.job.form.label.salary" path="salary"/>
 	<acme:form-money code="authenticated.job.form.label.moreInfo" path="moreInfo"/>
+	<jstl:if test="${hasChallenge==true}">
+	<jstl:if test="${command=='show'}">
+	<h4><acme:message code="auditor.job.form.label.challengeShow"/></h4>
+	</jstl:if>
+	</jstl:if>
+	<jstl:if test="${command=='create' }">
+	<acme:message code="auditor.job.form.label.challengeCreate"/>
+	</jstl:if>
+	<jstl:if test="${hasChallenge==true}">
+	<acme:form-textarea code="auditor.job.form.label.textChallenge" path="textChallenge"/>
+	<acme:form-textbox code="auditor.job.form.label.link" path="link"/>
+	</jstl:if>
 	<jstl:set var="idJob" value="${id}"/>
 	<jstl:set var="jobId" value="${id}"/>
 	<h4><acme:menu-suboption code="authenticated.job.form.label.duties" action="/auditor/descriptor/show?jobId=${jobId}"/></h4>

@@ -13,6 +13,12 @@ worker.application.form.label.moment = Momento:
 worker.application.form.label.reference = Referencia:
 worker.application.form.label.statement = Defensa:
 worker.application.form.label.justification = Justificación:
+worker.application.form.label.answerCreate = Si quiere, puede dar una respuesta al reto del trabajo
+worker.application.form.label.answer = Respuesta:
+worker.application.form.label.link = Link:
+worker.applicaiton.form.label.passwordCreate = Puede hacer su respuesta protegida por contraseña escribiendo una aquí(4 letras, 2 nums y 2 simbolos):
+worker.application.form.label.answerShow = Respuesta al reto del trabajo
+worker.application.form.label.password = Contraseña:
 worker.application.form.label.button.return = Volver
 worker.application.form.label.button.create = Crear
 
@@ -23,3 +29,4 @@ worker.application.error.must-have-skills = Las habilidades no pueden ser nulas
 worker.application.error.must-have-qualifications = Las calificaciones no pueden ser nulas
 worker.application.error.must-have-statement = La sentencia no debe ser nula
 worker.application.error.pattern-status= Debe ser pending, accepted o rejected
+worker.application.error.must-have-answer = Debe dar una respuesta al reto

@@ -26,8 +26,14 @@
     create table `application` (
        `id` integer not null,
         `version` integer not null,
+        `answer` varchar(1024),
+        `has_answer` bit not null,
+        `has_been_protected` bit not null,
+        `has_password` bit not null,
         `justification` varchar(255),
+        `link` varchar(255),
         `moment` datetime(6),
+        `password` varchar(255),
         `qualifications` varchar(1024),
         `reference` varchar(255),
         `skills` varchar(1024),
@@ -156,6 +162,14 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `derivatedjob` (
+       `id` integer not null,
+        `version` integer not null,
+        `more_info` varchar(255),
+        `text` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `descriptor` (
        `id` integer not null,
         `version` integer not null,
@@ -199,10 +213,13 @@
         `deadline` datetime(6),
         `final_mode` bit not null,
         `has_application` bit not null,
+        `has_challenge` bit not null,
+        `link` varchar(255),
         `more_info` varchar(255),
         `reference` varchar(255),
         `salary_amount` double precision,
         `salary_currency` varchar(255),
+        `text_challenge` varchar(1024),
         `title` varchar(255),
         `employer_id` integer not null,
         primary key (`id`)

@@ -56,6 +56,15 @@ public class Job extends DomainEntity {
 
 	private boolean				hasApplication;
 
+	@Length(max = 200)
+	@Column(length = 1024)
+	private String				textChallenge;
+
+	@URL
+	private String				link;
+
+	private boolean				hasChallenge;
+
 	//	Relationships -------------------------------------------------------------------------
 
 	@NotNull

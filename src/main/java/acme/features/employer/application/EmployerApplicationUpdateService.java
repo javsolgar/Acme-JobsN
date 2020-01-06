@@ -43,6 +43,7 @@ public class EmployerApplicationUpdateService implements AbstractUpdateService<E
 		assert entity != null;
 		assert errors != null;
 		request.bind(entity, errors, "reference", "moment", "skills", "statement", "qualifications", "worker", "job");
+		request.bind(entity, errors, "answer", "link", "hasAnswer", "hasPassword");
 	}
 
 	@Override
@@ -82,12 +83,22 @@ public class EmployerApplicationUpdateService implements AbstractUpdateService<E
 		boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
 		errors.state(request, ErrorPattern, "status", "employer.application.error.pattern-status");
 
+		if (request.getModel().getString("repass") != null && request.getModel().getString("repass").trim() != "") {
+			boolean equals = request.getModel().getString("repass").equals(entity.getPassword());
+			errors.state(request, equals, "repass", "employer.application.error.not-equal-pass");
+
+		}
+
 	}
 
 	@Override
 	public void update(final Request<Application> request, final Application entity) {
 		assert request != null;
 		assert entity != null;
+
+		if (request.getModel().getString("repass") != null && request.getModel().getString("repass").trim() != "") {
+			entity.setHasPassword(false);
+		}
 
 		this.repository.save(entity);
 	}

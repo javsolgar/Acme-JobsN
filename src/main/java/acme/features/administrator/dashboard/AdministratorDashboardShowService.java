@@ -54,6 +54,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		request.unbind(entity, model, "totalAnnouncement", "totalInvestorsRecord", "totalCompanyRecords", "minRewardRequest", "maxRewardRequest", "minRewardOffers", "maxRewardOffers", "companysBySector", "sectorsOfCompanys", "inverstorsBySector",
 			"sectorsOfInverstors", "mediaRequest", "mediaOffer", "stdevRequest", "stdevOffer", "jobsByFinalMode", "statusOfApplication", "applicationByStatus", "avgApplicationEmployer", "avgJobEmployer", "avgApplicationWorker", "diasPending",
 			"applicationPendingPerDay", "applicationAcceptedPerDay", "applicationRejectedPerDay");
+		request.unbind(entity, model, "ratioJobsWithChallenge", "ratioApplicationsPassProtected");
 
 	}
 
@@ -85,6 +86,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setApplicationPendingPerDay(this.getApplicationPendingPerDay(this.getPendingPerDay()));
 		result.setApplicationAcceptedPerDay(this.getApplicationAcceptedPerDay(this.getAcceptedPerDay()));
 		result.setApplicationRejectedPerDay(this.getApplicationRejectedPerDay(this.getRejectedPerDay()));
+		result.setRatioApplicationsPassProtected(this.repository.ratioApplicationsPassProtected());
+		result.setRatioJobsWithChallenge(this.repository.ratioJobsWithChallenge());
 
 		return result;
 	}

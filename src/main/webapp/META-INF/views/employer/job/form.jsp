@@ -15,15 +15,36 @@
 	
 	
 	<acme:form-textbox code="employer.job.form.label.reference" path="reference" readonly="${read}"/>
-	<acme:form-textbox code="employer.job.form.label.title" path="title"/>
+	<acme:form-textbox code="employer.job.form.label.title" path="title" readonly="${fm}"/>
 	
 	<jstl:if test="${command == 'create'}">
 	<acme:form-textarea code="employer.job.form.label.description" path="description"/>
 	</jstl:if>
 	
-	<acme:form-moment code="employer.job.form.label.deadline" path="deadline"/>
-	<acme:form-money code="employer.job.form.label.salary" path="salary"/>
-	<acme:form-textbox code="employer.job.form.label.moreInfo" path="moreInfo"/>
+	<acme:form-moment code="employer.job.form.label.deadline" path="deadline" readonly="${fm}"/>
+	<acme:form-money code="employer.job.form.label.salary" path="salary" readonly="${fm}"/>
+	<acme:form-textbox code="employer.job.form.label.moreInfo" path="moreInfo" readonly="${fm}"/>
+	<jstl:if test="${command=='create'}">
+	<jstl:if test="${command=='create' || command=='update'}">
+	<h4><acme:message code="employer.job.form.label.challengeCreate"/></h4>
+	</jstl:if>
+	<acme:form-textarea code="employer.job.form.label.textChallenge" path="textChallenge" readonly="${fm}"/>
+	<acme:form-textbox code="employer.job.form.label.link" path="link" readonly="${fm}"/>
+	</jstl:if>
+	
+	<jstl:if test="${hasChallenge==true && finalMode==true}">
+	<jstl:if test="${command=='show'}">
+	<h4><acme:message code="employer.job.form.label.challengeShow"/></h4>
+	</jstl:if>
+	<acme:form-textarea code="employer.job.form.label.textChallenge" path="textChallenge" readonly="${fm}"/>
+	<acme:form-textbox code="employer.job.form.label.link" path="link" readonly="${fm}"/>
+	</jstl:if>
+	
+	<jstl:if test="${finalMode==false}">
+	<h4><acme:message code="employer.job.form.label.challengeShow"/></h4>
+	<acme:form-textarea code="employer.job.form.label.textChallenge" path="textChallenge" readonly="${fm}"/>
+	<acme:form-textbox code="employer.job.form.label.link" path="link" readonly="${fm}"/>
+	</jstl:if>
 	
 	<jstl:if test="${finalMode == false && command != 'create'}">
 	<acme:form-select code="employer.job.form.label.finalMode" path="finalMode">
