@@ -12,6 +12,7 @@ worker.application.form.label.qualifications = Qualifications:
 worker.application.form.label.moment = Moment:
 worker.application.form.label.reference = Reference:
 worker.application.form.label.statement = Statement:
+worker.application.message.status = Status of application:
 worker.application.form.label.justification = Justification: 
 
 worker.application.form.label.button.return = Return
@@ -24,3 +25,6 @@ worker.application.error.must-have-skills = Skills must not be null
 worker.application.error.must-have-qualifications = Qualifications must not be null
 worker.application.error.must-have-statement = Statement must not be null
 worker.application.error.pattern-status= It must be pending, accepted or rejected
+worker.application.error.must-not-have-spam-skills = The skills must not have spam
+worker.application.error.must-not-have-spam-statement = The statement must not contains spam
+worker.application.error.must-not-have-spam-qualifications = The qualifications must not contains spam

@@ -11,6 +11,7 @@ import acme.entities.auditrecord.Auditrecord;
 import acme.entities.descriptor.Descriptor;
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
+import acme.entities.participatein.Participatein;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -23,7 +24,7 @@ public class EmployerJobDeleteService implements AbstractDeleteService<Employer,
 
 	//	Internal State -------------------------------------------------------------------------------------------------------------------
 	@Autowired
-	EmployerJobRepository repository;
+	private EmployerJobRepository repository;
 
 
 	@Override
@@ -95,6 +96,12 @@ public class EmployerJobDeleteService implements AbstractDeleteService<Employer,
 		for (Auditrecord audit : ar) {
 			this.repository.delete(audit);
 		}
+
+		Collection<Participatein> participates = this.repository.findParticipates(entity.getId());
+		for (Participatein pi : participates) {
+			this.repository.delete(pi);
+		}
+
 		Collection<Application> ap = this.repository.findManyApplicationByJobId(entity.getId());
 		for (Application appli : ap) {
 			this.repository.delete(appli);
