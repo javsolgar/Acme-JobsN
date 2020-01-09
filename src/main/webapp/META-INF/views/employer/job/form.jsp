@@ -48,7 +48,12 @@
 	<jstl:set var="idJob" value="${id}"/>
 	<jstl:set var="jobId" value="${id}"/>
 	<jstl:if test="${command != 'create'}">
+	<jstl:if test="${command == 'update'}">
+	<h4><acme:menu-suboption code="employer.job.form.label.duties" action="/employer/descriptor/show?jobId=${jobId}&fm=false"/></h4>
+	</jstl:if>
+	<jstl:if test="${command != 'update'}">
 	<h4><acme:menu-suboption code="employer.job.form.label.duties" action="/employer/descriptor/show?jobId=${jobId}&fm=${fm}"/></h4>
+	</jstl:if>
 	<jstl:if test="${finalMode == true && command == 'show'}">
   	<h4><acme:menu-suboption code="employer.job.form.label.auditRecords" action="/employer/auditrecord/list_mine?id=${idJob}"/></h4>
   	</jstl:if>

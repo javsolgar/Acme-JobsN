@@ -18,7 +18,7 @@ import acme.framework.services.AbstractListService;
 public class EmployerDutyListService implements AbstractListService<Employer, Duty> {
 
 	@Autowired
-	EmployerDutyRepository repository;
+	private EmployerDutyRepository repository;
 
 
 	@Override
