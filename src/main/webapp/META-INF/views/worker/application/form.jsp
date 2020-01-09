@@ -12,9 +12,10 @@
 	<acme:form-textarea code="worker.application.form.label.statement" path="statement"/>
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications"/>
 	<jstl:if test="${command == 'show' }">
+	<h4><acme:message code="worker.application.message.status"/></h4>
 	<acme:form-textbox code="worker.application.form.label.status" path="status" readonly="true"/>
 	</jstl:if>
-	<jstl:if test="${status != 'pending'}">
+	<jstl:if test="${status != 'pending' && command != 'create'}">
 		<acme:form-textbox code="worker.application.form.label.justification" path="justification"/>
 	</jstl:if>
 	<acme:form-submit test ="${command == 'create'}" code="worker.application.form.label.button.create" action="/worker/application/create?jobId=${param.jobId}"/>
